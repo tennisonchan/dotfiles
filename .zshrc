@@ -10,6 +10,10 @@ ZSH_THEME="robbyrussell"
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
 
+# Uncomment the following line to use hyphen-insensitive completion. Case
+# sensitive completion must be off. _ and - will be interchangeable.
+# HYPHEN_INSENSITIVE="true"
+
 # Uncomment the following line to disable bi-weekly auto-update checks.
 # DISABLE_AUTO_UPDATE="true"
 
@@ -45,19 +49,21 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git git-flow rails ruby docker)
+plugins=(git ember-cli)
 
 # User configuration
 
-export PATH="./bin:/Users/tennison-chan/.rbenv/shims:/Users/tennison-chan/anaconda3/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
+export PATH="bin:/Users/tennison-chan/.nvm:/Users/tennison-chan/.rbenv/shims:/Users/tennison-chan/.rbenv/bin:/Users/tennison-chan/anaconda3/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin"
 # export MANPATH="/usr/local/man:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh
 
 # You may need to manually set your language environment
-# export LANG=en_US.UTF-8
+export LANG=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
+export EDITOR='subl'
+
 # if [[ -n $SSH_CONNECTION ]]; then
 #   export EDITOR='vim'
 # else
@@ -79,17 +85,17 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias gup="git checkout master && git pull && git checkout - && git merge master"
-alias nom='npm cache clear && rm -rf node_modules && npm install'
-alias bom='bower cache clear && rm -rf bower_components && bower install'
-alias nombom='nom && bom'
-alias be='bundle exec'
+alias nom="npm cache clear && rm -rf node_modules && npm install"
+alias bom="bower cache clean && rm -rf bower_components && bower install"
+alias nombom="nom && bom"
+alias be="bundle exec"
+alias b="bundle"
+alias pr="git pull-request"
+alias e="$EDITOR"
+alias up="bundle && rake db:migrate && rake db:migrate RAILS_ENV=test && rake db:reload_views && rake db:reload_views RAILS_ENV=test"
 
-function gi() { curl -L -s https://www.gitignore.io/api/$@ ;}
-eval "$(rbenv init -)"
+## Aliasing hub with git
+## eval "$(hub alias -s)"
 
 export NVM_DIR="/Users/tennison-chan/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
-
-# CUDA http://docs.nvidia.com/cuda/cuda-getting-started-guide-for-mac-os-x/#download
-export PATH=/Developer/NVIDIA/CUDA-7.0/bin:$PATH
-export DYLD_LIBRARY_PATH=/Developer/NVIDIA/CUDA-7.0/lib:$DYLD_LIBRARY_PATH
